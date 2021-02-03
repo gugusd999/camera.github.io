@@ -107,6 +107,10 @@ function el(el) {
         this.el.style.width = a;
         return this;
     }
+    obj.margin = function (a) {
+        this.el.style.margin = a;
+        return this;
+    }
     obj.padding = function (a) {
         this.el.style.padding = a;
         return this;
@@ -133,6 +137,10 @@ function el(el) {
     }
     obj.attr = function (a, d) {
         this.el.setAttribute(a, d);
+        return this;
+    }
+    obj.data = function (a, d) {
+        this.el.setAttribute('data-' + a, d);
         return this;
     }
     obj.get = function () {
@@ -267,7 +275,6 @@ newStyle.appendChild(
     ")
 );
 
-
 function a() {
     return el('a').css("font-family", "arima")
         .css('transition', '0.3s')
@@ -313,11 +320,35 @@ function input() {
 function btn() {
     return el('button');
 }
+function tbl() {
+    return el('TABLE');
+}
+function tr() {
+    return el('TR');
+}
+function td() {
+    return el('TD');
+}
+function th() {
+    return el('TH');
+}
+function thead() {
+    return el('THEAD');
+}
+function tbody() {
+    return el('TBODY');
+}
 function ul() {
     return el('ul');
 }
 function li() {
     return el('li');
+}
+function option() {
+    return el('option');
+}
+function select() {
+    return el('select');
 }
 function span() {
     return el('span');
