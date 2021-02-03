@@ -107,6 +107,10 @@ function el(el) {
         this.el.style.width = a;
         return this;
     }
+    obj.padding = function (a) {
+        this.el.style.padding = a;
+        return this;
+    }
     obj.height = function (a) {
         this.el.style.height = a;
         return this;

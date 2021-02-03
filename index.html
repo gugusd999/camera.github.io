@@ -13,8 +13,6 @@
         }
 
         #foto {
-            position: fixed;
-            top: 20px;
             left: calc(50% - 150px);
             right: 0;
             height: 300px;
@@ -52,35 +50,33 @@
             var video = document.getElementById('foto');
             var context = canvas.getContext('2d');
             console.log(canvas.toDataURL())
+            document.getElementById('look').src = canvas.toDataURL();
         }
 
         var camera = div()
             .child(
-                video().id("foto").onload(activeVideo)
+                div()
+                    .css('margin-top', '20px')
+                    .css('text-align', 'center')
+                    .child(
+                        video().id("foto").onload(activeVideo)
+                    )
             )
             .child(
-                canvas().id('canvas').css('dislay', 'none')
+                canvas().id('canvas').css('display', 'none')
             )
             .child(
-                btn().text('shoot')
-                    .click(getContent)
-                    .css({
-                        'display': 'inline-block',
-                        'position': 'fixed',
-                        'width': '50px',
-                        'height': '50px',
-                        'border-radius': '50%',
-                        'background': '#ddd',
-                        'border': 'none',
-                        'outline': 'none',
-                        'box-shadow': '1px 2px 10px #395',
-                        'cursor': 'pointer',
-                        'top': '350px',
-                        'left': 'calc(50% - 25px)',
-                    })
+                div()
+                    .css('text-align', 'center')
+                    .child(
+                        btn().text('shoot')
+                            .click(getContent).padding('5px 8px')
+                    )
+            )
+            .child(
+                img().id('look')
             )
         domp("root", camera.get())
-
     </script>
 
 </body>
