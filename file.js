@@ -103,6 +103,14 @@ function el(el) {
         this.el.setAttribute('src', a);
         return this;
     }
+    obj.width = function (a) {
+        this.el.style.width = a;
+        return this;
+    }
+    obj.height = function (a) {
+        this.el.style.height = a;
+        return this;
+    }
     obj.placeholder = function (a) {
         this.el.setAttribute('placeholder', a);
         return this;
@@ -312,6 +320,12 @@ function span() {
 }
 function i() {
     return el('i');
+}
+function video() {
+    return el('video');
+}
+function canvas() {
+    return el('canvas');
 }
 function icon(a) {
     return i().class(a)
