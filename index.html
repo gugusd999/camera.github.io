@@ -6,16 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./file.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #foto {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -100;
+            right: 0;
+            bottom: 0;
+            background: url(../img/index-image.jpg) no-repeat center center;
+            background-size: cover;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
-
     <div id="root">
     </div>
     <script>
-
-        function activeVideo(el) {
+        function activeVideo(el, w, h) {
             var video = el;
+            // el.style.width = w + 'px';
+            // el.style.height = h + 'px';
             // Get access to the camera!
             if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                 // Not adding `{ audio: true }` since we only want video now
@@ -31,18 +49,33 @@
             var canvas = document.getElementById('canvas');
             var video = document.getElementById('foto');
             var context = canvas.getContext('2d');
-            context.drawImage(video, 0, 0, 640, 480);
+            console.log(canvas.toDataURL())
         }
 
         var camera = div()
             .child(
-                video().id("foto").width('350px').onload(activeVideo)
+                video().id("foto").onload(activeVideo)
             )
             .child(
-                canvas().id('canvas').width("350px")
+                canvas().id('canvas').css('dislay', 'none')
             )
             .child(
-                btn().text('shoot').click(getContent)
+                btn().text('shoot')
+                    .click(getContent)
+                    .css({
+                        'display': 'inline-block',
+                        'position': 'fixed',
+                        'width': '50px',
+                        'height': '50px',
+                        'border-radius': '50%',
+                        'background': '#ddd',
+                        'border': 'none',
+                        'outline': 'none',
+                        'box-shadow': '1px 2px 10px #395',
+                        'cursor': 'pointer',
+                        'bottom': '20px',
+                        'right': '20px',
+                    })
             )
         domp("root", camera.get())
 
